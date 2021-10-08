@@ -1,2 +1,2 @@
 FROM gitpod/workspace-full-vnc
-RUN sudo apt-get update  && sudo apt-get install -y     tool  && sudo rm -rf /var/lib/apt/lists/*
+RUN sudo apt-get update  && sudo apt-get install -y   libasound2-dev   libgtk-3-dev   libnss3-dev  && sudo rm -rf /var/lib/apt/lists/*
