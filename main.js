@@ -19,4 +19,15 @@ app.on('ready', function(){
         protocol: 'file:',
         slashes: true
     }));
-})
+
+    // Build menu from template
+    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+    // Insert Menu
+    Menu.setApplicationMenu(mainMenu);
+});
+
+// Create MenuTemplate = {
+    {
+        label:File
+    }
+}
