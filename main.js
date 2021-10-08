@@ -26,8 +26,9 @@ app.on('ready', function(){
     Menu.setApplicationMenu(mainMenu);
 });
 
-// Create MenuTemplate = {
+// Create MenuTemplate 
+const mainMenuTemplate = [
     {
-        label:File
+        label:'File'
     }
-}
+];
