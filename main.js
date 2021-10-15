@@ -13,10 +13,13 @@ let addWindow
 // Listen for app to be ready
 app.on('ready', function(){
     // Create new window
-    mainWindow = new BrowserWindow({});
+    mainWindow = new BrowserWindow({
+        width: 1920,
+        heigth: 1080,
+    });
     // load html into window
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'mainWindow.html'),
+        pathname: path.join(__dirname, 'piechart.html'),
         protocol: 'file:',
         slashes: true
     }));

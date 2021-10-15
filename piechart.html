@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas
+        style="width: 70%; float: right; margin-top: -30%"
+        class="left-align"
+        id="myChart"
+      ></canvas>
+<script>
+ const data = {
+            labels: ['Mortgage', 'Car Loan', 'Bills', 'Left Over'],
+            datasets: [
+              {
+                label: 'My Fiances',
+                data: [100, 100, 100, 60],
+                backgroundColor: [
+                  'rgb(255, 99, 132)', //pink
+                  'rgb(54, 162, 235)', //blue
+                  'rgb(255, 205, 86)', //yellow
+                  'rgb(50, 168, 82)', //green
+                ],
+                hoverOffset: 4,
+              },
+            ],
+          }
+
+          const config = {
+            type: 'pie',
+            data: data,
+            options: {
+              layout: {
+                padding: {
+                  left: 500,
+                  right: 500,
+                  top: 0,
+                  bottom: 1500,
+                },
+              },
+            },
+          }
+
+          var myChart = new Chart(document.getElementById('myChart'), config)
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+</body>
+</html>
