@@ -81,7 +81,7 @@
             id="monthlyIncome"
             name="monthlyIncome"
             value="100"
-            onblur="upDateDatabase()"
+            onblur="newChart()"
           />
           <label class="active" for="monthlyIncome">Monthly Income</label>
         </div>
@@ -93,8 +93,8 @@
             type="text"
             id="monthlyCarPay"
             name="monthlyCarPay"
-            value="100"
-            onblur="upDateDatabase()"
+            value="101"
+            onblur="newChart()"
           />
           <label class="active" for="monthlyCarPay"
             >Monthly Car Payment</label
@@ -108,8 +108,8 @@
             type="text"
             id="monthlyMortgagePay"
             name="monthlyMortgagePay"
-            value="100"
-            onblur="upDateDatabase()"
+            value="102"
+            onblur="newChart()"
           />
           <label class="active" for="monthlyMortgagePay"
             >Monthly Mortgage Payment</label
@@ -123,8 +123,8 @@
             type="text"
             id="monthlyBills"
             name="monthlyBills"
-            value="100"
-            onblur="upDateDatabase()"
+            value="103"
+            onblur="newChart()"
           />
           <label class="active" for="monthlyBills">Monthly Bills</label>
         </div>
@@ -146,19 +146,25 @@
     <script>
 
       newChart()
-      var item1 = document.getElementById('monthlyIncome')
+      //var item1 = document.getElementById('monthlyIncome').value
+
       
-      console.log(item1)
+      //console.log(item1)
+      var myChart;
 
       function newChart(){
-        window.myChart = null
-        //var item1 = 0
-        //var item2 = document.getElementById(monthlyCarPayment)
-        //var item3 = document.getElementById(monthlyMortgagePay)
-        //var item4 = document.getElementById(monthlyBills)
+        //window.myChart = null
+        var item1 = Number(document.getElementById('monthlyIncome').value)
+        var item2 = Number(document.getElementById('monthlyCarPay').value)
+        var item3 = Number(document.getElementById('monthlyMortgagePay').value)
+        var item4 = Number(document.getElementById('monthlyBills').value)
         //var item5 = 0
 
-        //console.log("This is item1:" + item1)
+        console.log("This is item1:" + item1)
+        console.log("This is item2:" + item2)
+        console.log("This is item3:" + item3)
+        console.log("This is item4:" + item4)
+        
 
 
         const data = {
@@ -166,7 +172,7 @@
             datasets: [
               {
                 label: 'My Fiances',
-                data: [100, 100, 100, 60],
+                data: [item2, item3, item4, 60],
                 backgroundColor: [
                   'rgb(255, 99, 132)', //pink
                   'rgb(54, 162, 235)', //blue
