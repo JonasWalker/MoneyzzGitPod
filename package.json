@@ -18,5 +18,9 @@
   "homepage": "https://github.com/JonasWalker/MoneyzzGitPod#readme",
   "devDependencies": {
     "electron": "^15.1.2"
+  },
+  "dependencies": {
+    "chart.js": "^3.5.1",
+    "materialize": "^1.0.0"
   }
 }
