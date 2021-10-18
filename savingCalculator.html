@@ -28,12 +28,18 @@
       <canvas id="myChart"></canvas>
     </div>
     <a onclick="addData(myChart)" class="waves-effect waves-light btn"
-      >button</a
+      >Add a Month</a
+    >
+    <a onclick="deleteData(myChart)" class="waves-effect waves-light btn"
+      >Delete a Month</a
     >
     <script>
+      //currMonth = date.getMonth();
+
       var monthly = 100;
+      var totalAmount = monthly;
       var date = new Date();
-      var month = [
+      /*const months = [
         'January',
         'February',
         'March',
@@ -44,10 +50,26 @@
         'August',
         'September',
         'October',
+        'November',
         'December',
+      ];*/
+      const months = [
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+        '12',
       ];
       //const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
       const labels = [month[date.getMonth()]];
+      //const labels = month({ count: currMonth + 1 });
       const data = {
         labels: labels,
         datasets: [
@@ -64,6 +86,7 @@
         type: 'line',
         data: data,
         options: {
+          responsive: true,
           layout: {
             padding: {
               left: 100,
@@ -76,19 +99,53 @@
       };
 
       var myChart = new Chart(document.getElementById('myChart'), config);
+      currMonth = date.getMonth();
 
       function addData(myChart) {
         const data = myChart.data;
         console.log(data.labels);
+        console.log(data.labels.length);
+        console.log('currMonth in addData: ' + currMonth);
         if (data.datasets.length > 0) {
-          //data.labels = Utils.months({ count: data.labels.length + 1 });
-
-          //for (var index = 0; index < data.datasets.length; ++index) {
-          //  data.datasets[index].data.push(Utils.rand(-100, 100));
-          //}
-
-          chart.update();
+          data.labels = month({ count: data.labels.length + 1 });
+          for (var index = 0; index < data.datasets.length; ++index) {
+            totalAmount = totalAmount + monthly;
+            data.datasets[index].data.push(totalAmount);
+          }
+          myChart.update();
         }
+      }
+
+      function deleteData(myChart) {
+        myChart.data.labels.splice(-1, 1); // remove the label first
+
+        myChart.data.datasets.forEach((dataset) => {
+          dataset.data.pop();
+        });
+
+        myChart.update();
+      }
+
+      function month(config) {
+        var cfg = config || {};
+        var count = cfg.count || 12;
+        var section = cfg.section;
+        var values = [];
+        var i, value;
+
+        for (i = 0; i < count; ++i) {
+          value = months[Math.ceil(i) % 12];
+          values.push(value.substring(0, section));
+        }
+
+        return values;
+      }
+
+      function rand(min, max) {
+        min = valueOrDefault(min, 0);
+        max = valueOrDefault(max, 0);
+        _seed = (_seed * 9301 + 49297) % 233280;
+        return min + (_seed / 233280) * (max - min);
       }
     </script>
 
