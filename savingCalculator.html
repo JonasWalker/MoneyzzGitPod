@@ -27,8 +27,27 @@
     <div>
       <canvas id="myChart"></canvas>
     </div>
+    <a onclick="addData(myChart)" class="waves-effect waves-light btn"
+      >button</a
+    >
     <script>
-      const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+      var monthly = 100;
+      var date = new Date();
+      var month = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'December',
+      ];
+      //const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+      const labels = [month[date.getMonth()]];
       const data = {
         labels: labels,
         datasets: [
@@ -36,7 +55,7 @@
             label: 'My First dataset',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: [monthly],
           },
         ],
       };
@@ -57,6 +76,20 @@
       };
 
       var myChart = new Chart(document.getElementById('myChart'), config);
+
+      function addData(myChart) {
+        const data = myChart.data;
+        console.log(data.labels);
+        if (data.datasets.length > 0) {
+          //data.labels = Utils.months({ count: data.labels.length + 1 });
+
+          //for (var index = 0; index < data.datasets.length; ++index) {
+          //  data.datasets[index].data.push(Utils.rand(-100, 100));
+          //}
+
+          chart.update();
+        }
+      }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
