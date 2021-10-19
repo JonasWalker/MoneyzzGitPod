@@ -147,6 +147,28 @@
         _seed = (_seed * 9301 + 49297) % 233280;
         return min + (_seed / 233280) * (max - min);
       }
+
+      /*public static string returnNextMonth(ref int graphMonth, int _currMonth, string[] _months){
+		if(graphMonth > 10){
+			graphMonth = 0;
+			return _months[graphMonth];
+			//push
+		}
+		graphMonth++;
+		return _months[graphMonth];
+		//push
+	}
+	
+	public static string returnPreviousMonth(ref int graphMonth, int _currMonth, string[] _months){
+		if(graphMonth < 1){
+			graphMonth = 11;
+			return _months[graphMonth];
+			//pop 
+		}
+		graphMonth--;
+		return _months[graphMonth];
+		//pop
+	}*/
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
