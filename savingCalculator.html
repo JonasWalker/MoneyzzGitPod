@@ -27,7 +27,10 @@
     <div>
       <canvas id="myChart"></canvas>
     </div>
-    <a onclick="addData(myChart)" class="waves-effect waves-light btn"
+    <!--<a onclick="addData(myChart)" class="waves-effect waves-light btn"
+      >Add a Month</a
+    > -->
+    <a onclick="returnNextMonth(myChart)" class="waves-effect waves-light btn"
       >Add a Month</a
     >
     <a onclick="deleteData(myChart)" class="waves-effect waves-light btn"
@@ -39,6 +42,7 @@
       var monthly = 100;
       var totalAmount = monthly;
       var date = new Date();
+
       /*const months = [
         'January',
         'February',
@@ -100,12 +104,13 @@
 
       var myChart = new Chart(document.getElementById('myChart'), config);
       currMonth = date.getMonth();
+      graphMonth = date.getMonth();
 
       function addData(myChart) {
         const data = myChart.data;
-        console.log(data.labels);
-        console.log(data.labels.length);
-        console.log('currMonth in addData: ' + currMonth);
+        //console.log(data.labels);
+        //console.log(data.labels.length);
+        //console.log('currMonth in addData: ' + currMonth);
         if (data.datasets.length > 0) {
           data.labels = month({ count: data.labels.length + 1 });
           for (var index = 0; index < data.datasets.length; ++index) {
@@ -146,6 +151,32 @@
         max = valueOrDefault(max, 0);
         _seed = (_seed * 9301 + 49297) % 233280;
         return min + (_seed / 233280) * (max - min);
+      }
+
+      function returnNextMonth(myChart) {
+        console.log(graphMonth);
+        const data = myChart.data;
+        if (data.datasets.length > 0) {
+          if (graphMonth > 10) {
+            graphMonth = 0;
+            data.labels = months[graphMonth];
+            for (var index = 0; index < data.datasets.length; ++index) {
+              totalAmount = totalAmount + monthly;
+              data.datasets[index].data.push(totalAmount);
+              myChart.update();
+              return;
+            }
+            //return months[graphMonth]
+          }
+          graphMonth++;
+          data.labels = months[graphMonth];
+          for (var index = 0; index < data.datasets.length; ++index) {
+            totalAmount = totalAmount + monthly;
+            data.datasets[index].data.push(totalAmount);
+          }
+          myChart.update();
+          //return _months[graphMonth]
+        }
       }
 
       /*public static string returnNextMonth(ref int graphMonth, int _currMonth, string[] _months){
